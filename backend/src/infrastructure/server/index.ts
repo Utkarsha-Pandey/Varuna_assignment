@@ -15,7 +15,7 @@ const app = express();
 
 // --- Add these lines ---
 app.use(cors({
-  origin: 'http://localhost:5173' // Allow requests from your Vite frontend
+  origin: '*' // Allow requests from your Vite frontend
 }));
 // --- End of new lines ---
 
