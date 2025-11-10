@@ -1,5 +1,6 @@
 import { IShipCompliance } from '../domain/compliance';
 import { BankingSummary, BankEntry } from '../domain/banking';
+import { PoolMember } from '../domain/pooling'; // ✅ Added import
 
 export interface IComplianceApi {
   /**
@@ -21,4 +22,16 @@ export interface IComplianceApi {
    * Applies a specific amount of banked surplus to a deficit.
    */
   applyBankedSurplus(shipId: string, year: number, amount: number): Promise<BankEntry>;
+
+  // --- NEW METHODS ADDED BELOW ---
+
+  /**
+   * Gets the adjusted CB for a ship (CB + net banking).
+   */
+  getAdjustedComplianceBalance(shipId: string, year: number): Promise<IShipCompliance>;
+
+  /**
+   * Submits a new pool to be created.
+   */
+  createPool(year: number, members: { shipId: string }[]): Promise<PoolMember[]>;
 }

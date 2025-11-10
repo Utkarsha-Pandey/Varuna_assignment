@@ -6,6 +6,7 @@ import { CompareTab } from './adapters/ui/components/CompareTab';
 import { ComplianceService } from './core/application/compliance.service';
 import { AxiosComplianceApi } from './adapters/infrastructure/axios.compliance.api';
 import { BankingTab } from './adapters/ui/components/BankingTab';
+import { PoolingTab } from './adapters/ui/components/PoolingTab';
 
 const routeApi = new AxiosRouteApi();
 const routeService = new RouteService(routeApi);
@@ -27,7 +28,7 @@ function App() {
       case 'Banking':
         return <BankingTab complianceService={complianceService} />;
       case 'Pooling':
-        return <div className="bg-white rounded-lg shadow-md p-8">Pooling Tab Content</div>;
+         return <PoolingTab complianceService={complianceService} />;
       default:
         return null;
     }
