@@ -40,7 +40,7 @@ export const CompareTab: React.FC<CompareTabProps> = ({ routeService }) => {
   ];
 
   return (
-    <div className="p-4 bg-gradient-to-br from-blue-400 via-white to-gray-300 min-screen rounded-lg">
+    <div className="p-4 space-y-6 bg-gradient-to-br from-blue-400 via-white to-gray-300 min-h-screen rounded-lg">
       {/* 1. Baseline & Target Info */}
       <div className="grid grid-cols-2 gap-4">
         <div className="bg-blue-50 p-4 rounded-lg shadow">
@@ -58,17 +58,36 @@ export const CompareTab: React.FC<CompareTabProps> = ({ routeService }) => {
       {/* 2. Comparison Chart */}
       <div>
         <h2 className="text-xl font-semibold mb-4">GHG Intensity Comparison</h2>
+        {/* Legend for baseline/target to avoid overlapping labels on the chart */}
+        <div className="flex items-center gap-6 mb-3">
+          <div className="flex items-center gap-2">
+            <span style={{ display: 'inline-block', width: 48, height: 0, borderTop: '3px dashed #e53e3e' }} />
+            <span className="text-sm font-medium text-gray-800">Target: {data.target} gCO₂e/MJ</span>
+          </div>
+          <div className="flex items-center gap-2">
+            {/* Baseline is a blue dashed reference line */}
+            <span style={{ display: 'inline-block', width: 48, height: 0, borderTop: '3px dashed #2b6cb0' }} />
+            <span className="text-sm font-medium text-gray-800">Baseline: {data.baseline.ghg_intensity} gCO₂e/MJ ({data.baseline.route_id})</span>
+          </div>
+        </div>
+
         <div style={{ width: '100%', height: 300 }}>
-          <ResponsiveContainer>
-            <BarChart data={chartData}>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart
+              data={chartData}
+              barGap={20}
+              barCategoryGap="40%"
+              margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+            >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               <YAxis label={{ value: 'gCO₂e/MJ', angle: -90, position: 'insideLeft' }} />
               <Tooltip />
               <Legend />
-              <Bar dataKey="ghgIntensity" fill="#8884d8" name="GHG Intensity" />
-              <ReferenceLine y={data.target} label="Target" stroke="red" strokeDasharray="3 3" />
-              <ReferenceLine y={data.baseline.ghg_intensity} label="Baseline" stroke="blue" strokeDasharray="3 3" />
+              <Bar dataKey="ghgIntensity" fill="#2f855a" name="GHG Intensity" barSize={70} />
+              {/* Use visible lines but no in-chart labels (we show labels in the legend above) */}
+              <ReferenceLine y={data.target} stroke="#e53e3e" strokeDasharray="3 3" strokeWidth={2} />
+              <ReferenceLine y={data.baseline.ghg_intensity} stroke="#2b6cb0" strokeDasharray="3 3" strokeWidth={2} />
             </BarChart>
           </ResponsiveContainer>
         </div>

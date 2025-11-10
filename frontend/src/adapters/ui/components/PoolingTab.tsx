@@ -74,7 +74,7 @@ export const PoolingTab: React.FC<PoolingTabProps> = ({ complianceService }) => 
   const availableShips = allShips.filter(s => !members.find(m => m.ship_id === s));
 
   return (
-    <div className="p-4 space-y-6">
+    <div className="p-4 space-y-6 bg-gradient-to-br from-blue-400 via-white to-gray-300 min-screen rounded-lg">
       {/* 1. Controls */}
       <div className="flex space-x-4 items-center p-4 bg-gray-50 rounded-lg">
         <select value={year} onChange={e => setYear(parseInt(e.target.value))} className="border rounded p-2">
