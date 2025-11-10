@@ -40,7 +40,7 @@ export const CompareTab: React.FC<CompareTabProps> = ({ routeService }) => {
   ];
 
   return (
-    <div className="p-4 space-y-8">
+    <div className="p-4 bg-gradient-to-br from-blue-400 via-white to-gray-300 min-screen rounded-lg">
       {/* 1. Baseline & Target Info */}
       <div className="grid grid-cols-2 gap-4">
         <div className="bg-blue-50 p-4 rounded-lg shadow">

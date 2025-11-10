@@ -87,7 +87,7 @@ export const BankingTab: React.FC<BankingTabProps> = ({ complianceService }) => 
   const canApply = cb_before < 0 && net_banked > 0;
 
   return (
-    <div className="p-4 space-y-6">
+    <div className="p-4 space-y-6 bg-gradient-to-br from-blue-400 via-white to-gray-300 min-screen rounded-lg">
       {/* 1. Input Controls */}
       <div className="flex space-x-4 items-center p-4 bg-gray-50 rounded-lg">
         <select value={shipId} onChange={e => setShipId(e.target.value)} className="border rounded p-2">
