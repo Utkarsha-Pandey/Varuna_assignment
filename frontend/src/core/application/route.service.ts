@@ -1,5 +1,6 @@
 import { Route } from '../domain/route';
 import { IRouteApi } from '../ports/route.api';
+import { ComparisonData } from '../../core/domain/comparison';
 
 export class RouteService {
   constructor(private readonly routeApi: IRouteApi) {}
@@ -16,5 +17,10 @@ export class RouteService {
       console.error('Service error setting baseline:', error);
       throw new Error('Failed to set baseline in service');
     }
+  }
+
+
+ public async getComparison(): Promise<ComparisonData> {
+    return this.routeApi.getComparisonData();
   }
 }

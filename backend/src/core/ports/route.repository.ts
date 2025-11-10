@@ -1,16 +1,17 @@
 import { Route } from '../domain/Route';
 
 export interface IRouteRepository {
-  /**
-   * Finds all routes.
-   * @returns A promise resolving to an array of routes.
-   */
   findAll(): Promise<Route[]>;
+  setBaseline(id: number): Promise<void>;
+
+  // --- ADD THESE TWO METHODS ---
+  /**
+   * Finds the single route marked as baseline.
+   */
+  findBaseline(): Promise<Route | null>;
 
   /**
-   * Sets a specific route as the baseline.
-   * This should set all other routes to is_baseline = false.
-   * @param id The database primary key of the route.
+   * Finds all routes NOT marked as baseline.
    */
-  setBaseline(id: number): Promise<void>;
+  findNonBaselines(): Promise<Route[]>;
 }

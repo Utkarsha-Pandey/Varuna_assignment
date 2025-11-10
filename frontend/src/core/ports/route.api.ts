@@ -1,10 +1,10 @@
 import { Route } from '../domain/route';
+import { ComparisonData } from '../domain/comparison'; // <-- Import this
 
 export interface IRouteApi {
   getAllRoutes(): Promise<Route[]>;
-  /**
-   * Sets a specific route as the baseline.
-   * @param id The database primary key of the route.
-   */
   setBaseline(id: number): Promise<void>;
+  
+  // --- ADD THIS METHOD ---
+  getComparisonData(): Promise<ComparisonData>;
 }

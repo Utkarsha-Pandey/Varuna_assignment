@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { RouteService } from './core/application/route.service';
 import { AxiosRouteApi } from './adapters/infrastructure/axios.route.api';
 import { RoutesTab } from './adapters/ui/components/RoutesTab';
+import { CompareTab } from './adapters/ui/components/CompareTab';
 
 const routeApi = new AxiosRouteApi();
 const routeService = new RouteService(routeApi);
@@ -17,7 +18,7 @@ function App() {
       case 'Routes':
         return <RoutesTab routeService={routeService} />;
       case 'Compare':
-        return <div className="bg-white rounded-lg shadow-md p-8">Compare Tab Content</div>;
+        return <CompareTab routeService={routeService} />;
       case 'Banking':
         return <div className="bg-white rounded-lg shadow-md p-8">Banking Tab Content</div>;
       case 'Pooling':
