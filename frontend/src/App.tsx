@@ -3,9 +3,14 @@ import { RouteService } from './core/application/route.service';
 import { AxiosRouteApi } from './adapters/infrastructure/axios.route.api';
 import { RoutesTab } from './adapters/ui/components/RoutesTab';
 import { CompareTab } from './adapters/ui/components/CompareTab';
+import { ComplianceService } from './core/application/compliance.service';
+import { AxiosComplianceApi } from './adapters/infrastructure/axios.compliance.api';
+import { BankingTab } from './adapters/ui/components/BankingTab';
 
 const routeApi = new AxiosRouteApi();
 const routeService = new RouteService(routeApi);
+const complianceApi = new AxiosComplianceApi();
+const complianceService = new ComplianceService(complianceApi);
 
 type Tab = 'Routes' | 'Compare' | 'Banking' | 'Pooling';
 
@@ -20,7 +25,7 @@ function App() {
       case 'Compare':
         return <CompareTab routeService={routeService} />;
       case 'Banking':
-        return <div className="bg-white rounded-lg shadow-md p-8">Banking Tab Content</div>;
+        return <BankingTab complianceService={complianceService} />;
       case 'Pooling':
         return <div className="bg-white rounded-lg shadow-md p-8">Pooling Tab Content</div>;
       default:
