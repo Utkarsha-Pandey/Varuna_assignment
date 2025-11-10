@@ -1,11 +1,17 @@
 import { Route } from '../domain/Route';
-import { IRouteRepository } from '../ports/IRouteRepository';
+import { IRouteRepository } from '../ports/route.repository';
 
 export class RouteService {
-  // We depend on the *interface* (port), not the concrete implementation
   constructor(private readonly routeRepository: IRouteRepository) {}
 
   public async getAllRoutes(): Promise<Route[]> {
     return this.routeRepository.findAll();
+  }
+
+  public async setRouteAsBaseline(id: number): Promise<void> {
+    if (id <= 0) {
+      throw new Error('Invalid route ID');
+    }
+    return this.routeRepository.setBaseline(id);
   }
 }
