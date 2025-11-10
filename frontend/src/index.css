@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .dashboard-header {
+    @apply text-4xl font-bold bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent;
+  }
+
+  .tab-button {
+    @apply px-6 py-3 font-medium text-sm rounded-t-lg transition-all duration-200;
+  }
+
+  .tab-button-active {
+    @apply bg-primary-600 text-white shadow-lg -translate-y-1;
+  }
+
+  .tab-button-inactive {
+    @apply text-gray-600 hover:text-primary-600 hover:bg-primary-50;
+  }
+
+  .content-panel {
+    @apply bg-white rounded-lg shadow-md p-6;
+  }
+}

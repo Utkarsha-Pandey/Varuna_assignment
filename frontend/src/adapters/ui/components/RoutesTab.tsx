@@ -23,7 +23,7 @@ export const RoutesTab: React.FC<RoutesTabProps> = ({ routeService }) => {
   }, [routeService]);
 
   return (
-    <div className="p-4">
+    <div className="p-4 bg-gradient-to-br from-blue-400 via-white to-gray-300 min-screen rounded-lg">
       {/* 1. Filters Section */}
       <div className="flex space-x-4 mb-4">
         <select className="border rounded p-2">
