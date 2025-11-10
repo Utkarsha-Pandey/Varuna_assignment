@@ -84,7 +84,7 @@ npm test
 
 
 ### Routes Tab
-![Routes Tab](./route.png)
+![Routes Tab](./routes.png)
 
 ### Compare Tab
 ![Compare Tab](./compare1.png)
